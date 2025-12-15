@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* ================================
+   SCROLL SUAVE Y OFFSET GLOBAL
+================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Distancia perfecta debajo del navbar al hacer clic */
+section[id],
+.vip-carousel,
+#zona-vip-form {
+  scroll-margin-top: 120px;
+}
+
+/* ================================
+   RESET & TIPOGRAFÍA
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* Paleta VIP */
+:root {
+  --negro: #000;
+  --blanco: #ffffff;
+  --dorado: #FFD700;
+  --golden-rose: #E7C6B5;
+}
+
+/* ================================
+   NAVBAR
+================================ */
+.navbar {
+  background: var(--negro) !important;
+  border-bottom: 2px solid var(--dorado) !important;
+}
+
+.navbar-brand span {
+  color: var(--dorado) !important;
+}
+
+.nav-link {
+  color: var(--blanco) !important;
+  font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--dorado) !important;
+}
+
+/* ================================
+   HERO VIP
+================================ */
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.hero-content h1 {
+  color: var(--dorado);
+  text-shadow: 0 0 20px rgba(255, 215, 0, .7);
+}
+
+.hero-content p {
+  font-size: 1.4rem;
+}
+
+/* ================================
+   SECCIÓN – TÍTULOS
+================================ */
+.section-title {
+  color: var(--dorado);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ================================
+   BENEFICIOS
+================================ */
+.card {
+  background: #111;
+  border: 1px solid var(--golden-rose);
+  color: var(--blanco);
+  transition: .3s ease;
+  border-radius: 15px;
+}
+
+.card:hover {
+  border-color: var(--dorado);
+  transform: translateY(-5px);
+}
+
+.card-title {
+  color: var(--dorado);
+  font-weight: 600;
+}
+
+/* ================================
+   CARRUSEL VIP
+================================ */
+.vip-carousel {
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid var(--dorado);
+}
+
+.img-vip {
+  width: 95%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  background: #000;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+/* ================================
+   FORMULARIO VIP
+================================ */
+.vip-form {
+  background: #111;
+  border: 1px solid var(--golden-rose);
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: var(--dorado);
+  font-size: 1.3rem;
+}
+
+.input-icon input,
+.input-icon select {
+  padding-left: 45px;
+  background: #000;
+  border: 1px solid var(--golden-rose);
+  color: var(--blanco);
+}
+
+.input-icon input::placeholder {
+  color: #ccc;
+}
+
+.form-select {
+  background: #000;
+  border: 1px solid var(--golden-rose);
+  color: var(--blanco);
+}
+
+.btn-warning {
+  background: var(--dorado);
+  color: #000;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-warning:hover {
+  background: #e5c100;
+}
+
+#vipConfirm {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* ================================
+   FOOTER
+================================ */
+footer {
+  background: #111;
+  border-top: 2px solid var(--dorado);
+}
+
+footer h2 {
+  color: var(--dorado);
+}
+
+footer p {
+  font-size: 0.95rem;
+}
+
+footer iframe {
+  border-radius: 10px;
+}
+
+.redes a i {
+  transition: .3s ease;
+}
+
+.redes a:hover i {
+  transform: scale(1.2);
+  color: var(--golden-rose);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .img-vip {
+    height: 300px;
+  }
+
+  section[id],
+  .vip-carousel,
+  #zona-vip-form {
+    scroll-margin-top: 150px;
+  }
+}

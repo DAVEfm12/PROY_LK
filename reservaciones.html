@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================
+       CONFIGURACIÓN BÁSICA
+  ============================= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reservaciones | LK Studio</title>
+  <!-- ============================
+       METADATOS SEO
+  ============================= -->
+  <meta name="description" content="Sistema de reservaciones de LK Studio. Selecciona tu fecha, hora y servicio de manera rápida y sencilla.">
+  <meta name="keywords" content="LK Studio, Reservaciones, Citas, Belleza, Servicios, PWA, Calendario, Estudio">
+  <meta name="author" content="David Flores Morales & Cristhian Jafeth Ortega Salas">
+  <meta name="robots" content="index, follow">
+  <!-- ============================
+       METADATOS PWA Y SOCIAL
+  ============================= -->
+  <meta name="theme-color" content="#d31ba2">
+  <meta property="og:title" content="Reservaciones | LK Studio">
+  <meta property="og:description" content="Agenda tu cita en LK Studio con nuestro sistema interactivo de reservaciones.">
+  <meta property="og:image" content="assets/img/LK.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lkstudio.com.mx/instructora.html">
+  <!-- ============================
+       ICONOS
+  ============================= -->
+  <link rel="icon" href="assets/img/LK.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/LK.ico">
+  <!-- ============================
+       BOOTSTRAP
+  ============================= -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ============================
+       FLATPICKR (Calendario & Hora)
+  ============================= -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <!-- ============================
+       GOOGLE FONTS
+  ============================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300;600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ============================
+       ESTILOS PERSONALIZADOS
+  ============================= -->
+  <link rel="stylesheet" href="css/reservacion.css">
+</head>
+
+<body>
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-black shadow-lg border-bottom border-warning">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/img/LK.png" width="45" class="me-2">
+        <span class="fw-bold text-warning">LK Studio</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="menu">
+        <ul class="navbar-nav me-3 gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="vip.html">Zona VIP</a></li>
+          <li class="nav-item"><a class="nav-link" href="instructora.html">Instructora</a></li>
+          <li class="nav-item"><a class="nav-link active" href="reservaciones.html">Reservaciones</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="container-card">
+
+  <h2>AGENDA TU CITA — LK STUDIO</h2>
+  <p class="small-muted text-center">Nota: los campos con * requieren diagnóstico previo.</p>
+
+  <form id="bookingForm" enctype="multipart/form-data">
+
+    <!-- FECHA Y HORA — ARRIBA -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label class="form-label">Fecha</label>
+        <input id="fecha" name="fecha" class="form-control" placeholder="Selecciona fecha" readonly required>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Hora</label>
+        <input id="hora_inicio" name="hora_inicio" class="form-control" placeholder="Selecciona hora" readonly required>
+      </div>
+    </div>
+
+    <!-- CLIENTE -->
+    <div class="mb-3">
+      <label for="cliente" class="form-label">Nombre del cliente</label>
+      <input id="cliente" name="cliente" class="form-control" required placeholder="Nombre completo">
+    </div>
+
+    <!-- CATEGORÍA & SERVICIO -->
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Categoría</label>
+        <select id="categoria" class="form-select" required>
+          <option value="">-- Selecciona categoría --</option>
+          <option value="UÑAS">UÑAS</option>
+          <option value="SPA">SPA</option>
+          <option value="COLORMETRIA">COLORMETRIA</option>
+          <option value="CORTE_CABELLO">CORTE DE CABELLO MUJER</option>
+          <option value="MAQUILLAJE">MAQUILLAJE</option>
+          <option value="PEINADO">PEINADO</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Servicio</label>
+        <select id="servicio" name="servicio" class="form-select" required>
+          <option value="">Selecciona una categoría primero</option>
+        </select>
+        <div class="note-star" id="notaService"></div>
+      </div>
+    </div>
+
+    <!-- IMAGEN -->
+    <div class="mb-3">
+      <label class="form-label">Imagen de referencia (opcional)</label>
+      <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control">
+    </div>
+
+    <!-- COMENTARIO -->
+    <div class="mb-3">
+      <label class="form-label">Comentario adicional</label>
+      <textarea id="comentario" name="comentario" class="form-control" rows="3"
+      placeholder="Detalles, preferencias, alergias..."></textarea>
+    </div>
+
+    <!-- BOTONES -->
+    <div class="mb-3 d-flex gap-2">
+      <button type="submit" class="btn btn-primary">Reservar y enviar a WhatsApp</button>
+
+      <button type="button" id="checkAvailabilityBtn" class="btn btn-outline-light">
+        Ver ocupación
+      </button>
+    </div>
+
+    <div id="responseMsg" class="mt-3"></div>
+
+  </form>
+
+  <hr class="mt-4">
+
+  <!-- LEYENDA -->
+  <h5 class="text-warning">Leyenda</h5>
+  <p class="small-muted">
+    <span class="badge-busy">Fechas saturadas</span> /
+    <span class="badge-free">Fechas con menor ocupación</span>
+  </p>
+  <p class="note-star">* Requiere diagnóstico previo.</p>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="py-5 bg-black text-light border-top border-warning">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4">Contactanos y ubicanos</h2>
+    <div class="row">
+      <!-- INFO -->
+      <div class="col-md-6 mb-4">
+        <p><strong>📍 Dirección:</strong> Tulcingo de Valle, Puebla</p>
+        <p><strong>📞 Teléfono:</strong>52 221 930 48 94</p>
+        <p><strong>📧 Email:</strong> contacto@lkstudio.com</p>
+        <p><strong>🕒 Horario: </strong> 9:00 AM – 2:00 PM</p>
+      </div>
+      <div class="col-md-6">
+        <iframe width="100%" height="300" style="border:0;" loading="lazy"
+          src="https://www.google.com/maps/embed?pb=!4v1764184771058!6m8!1m7!1sckl6OuHkXYtulYbg7PGVeg!2m2!1d18.044595!2d-98.438685!3f340!4f-4!5f1.32">
+        </iframe>
+      </div>
+    </div>
+    <div class="mb-4 d-flex justify-content-center">
+      <img src="assets/img/LK.png" width="80" class="mx-3">
+      <img src="assets/img/logoDS.png" width="80" class="mx-3">
+    </div>
+    <div class="redes mb-3 text-center">
+      <a href="https://www.facebook.com/share/1BmS2gRdq9/"><i class="fab fa-facebook fa-lg mx-2 text-warning"></i></a>
+      <a href="https://www.tiktok.com/@crhixa?_r=1&_t=ZS-91u7yaSAPXr"><i class="fab fa-tiktok fa-lg mx-2 text-warning"></i></a>
+      <a href="https://www.instagram.com/thu_sabe_le_kaprich?igsh=djdrMzRsdDd1bmEz"><i class="fab fa-instagram fa-lg mx-2 text-warning"></i></a>
+      <a href="https://youtube.com/@lek-prichmj5400?si=t2LgX_s5_-WQ_DNv"><i class="fab fa-youtube fa-lg mx-2 text-warning"></i></a>
+      <a href="https://pin.it/OGGdACcfw"><i class="fab fa-pinterest fa-lg mx-2 text-warning"></i></a>
+      <a href="https://wa.me/522219304894" target="_blank"><i class="fab fa-whatsapp fa-lg mx-2 text-warning"></i></a>
+    </div>
+    <p class="text-white-50 small">© 2025 LK Studio | Desarrollado por DAVE STUDIO</p>
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+<script>
+/* ========= SERVICIOS ========== */
+const serviciosMap = {
+  "UÑAS": [
+    "uñas *largo y diseño (variable)",
+    "uñas acrílicas",
+    "uñas gel semipermanente",
+    "uñas soft gel - largo",
+    "uñas techgel",
+    "uñas acrigel",
+    "uñas dual",
+    "uñas escultural"
+  ],
+  "SPA": [
+    "SPA *terminación gel",
+    "manicure",
+    "pedicure"
+  ],
+  "COLORMETRIA": [
+    "colormetría *densidad/largo",
+    "balayage",
+    "babylight",
+    "mechas",
+    "color completo",
+    "baño de color",
+    "planchado semi-permanente",
+    "planchado permanente",
+    "base permanente"
+  ],
+  "CORTE_CABELLO": ["capas","recto","degrafilado","Bob","mariposa"],
+  "MAQUILLAJE": ["casual","folklore","body paint","artístico","XV años","novias"],
+  "PEINADO": ["peinado casual","folklore","XV años","novias","trenzas","ondas de agua"]
+};
+
+const categoriaEl = document.getElementById("categoria");
+const servicioEl = document.getElementById("servicio");
+const notaServiceEl = document.getElementById("notaService");
+
+categoriaEl.addEventListener("change", () => {
+  const cat = categoriaEl.value;
+  servicioEl.innerHTML = "";
+
+  if (!cat) {
+    servicioEl.innerHTML = `<option value="">Selecciona una categoría</option>`;
+    notaServiceEl.textContent = "";
+    return;
+  }
+
+  serviciosMap[cat].forEach(serv => {
+    const opt = document.createElement("option");
+    opt.value = serv;
+    opt.textContent = serv;
+    servicioEl.appendChild(opt);
+  });
+
+  const requiere = serviciosMap[cat].some(s => s.includes("*"));
+  notaServiceEl.textContent = requiere ? "* Requiere diagnóstico previo." : "";
+});
+
+/* ========== CALENDARIO ========== */
+
+let occupancy = {};
+
+async function loadBusyDates() {
+  try {
+    const res = await fetch("get_busy_dates.php");
+    const data = await res.json();
+    occupancy = data.occupancy || {};
+    calendar.redraw();
+  } catch (e) {
+    console.log("Error cargando ocupación", e);
+  }
+}
+
+const calendar = flatpickr("#fecha", {
+  locale: "es",
+  dateFormat: "Y-m-d",
+  minDate: "today",
+
+  onDayCreate(_, __, ___, dayElem) {
+    const d = dayElem.dateObj.toISOString().slice(0, 10);
+    const count = occupancy[d] || 0;
+
+    if (count >= 5) dayElem.classList.add("fp-has-high-occupancy");
+    else if (count > 0) dayElem.classList.add("fp-has-low-occupancy");
+
+    if (count >= 8) dayElem.classList.add("flatpickr-disabled");
+  },
+
+  onOpen() {
+    loadBusyDates();
+  }
+});
+
+document.getElementById("checkAvailabilityBtn").onclick = async () => {
+  await loadBusyDates();
+  document.getElementById("responseMsg").textContent = "Calendario actualizado ✔";
+};
+
+/* ========== HORA ========== */
+flatpickr("#hora_inicio", {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true,
+  minuteIncrement: 5
+});
+
+/* ========== ENVIAR FORMULARIO ========== */
+
+const bookingForm = document.getElementById("bookingForm");
+
+bookingForm.addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const formData = new FormData(bookingForm);
+  formData.set("hora_inicio", formData.get("hora_inicio") + ":00");
+
+  const btn = bookingForm.querySelector("button[type='submit']");
+  btn.disabled = true;
+  btn.textContent = "Guardando...";
+
+  try {
+    const res = await fetch("save_booking.php", { method: "POST", body: formData });
+    const data = await res.json();
+
+    if (data.success) {
+      const msg = encodeURIComponent(
+        `Nueva reserva - LK STUDIO
+Cliente: ${formData.get("cliente")}
+Servicio: ${formData.get("servicio")}
+Fecha: ${formData.get("fecha")}
+Hora: ${formData.get("hora_inicio")}
+ID: ${data.id}`
+      );
+
+      window.open(`https://wa.me/?text=${msg}`, "_blank");
+
+      bookingForm.reset();
+      servicioEl.innerHTML = `<option value="">Selecciona una categoría</option>`;
+      notaServiceEl.textContent = "";
+      loadBusyDates();
+
+      document.getElementById("responseMsg").textContent = "Reserva guardada ✔";
+    } else {
+      document.getElementById("responseMsg").textContent = data.error || "Error al guardar.";
+    }
+  } catch (e) {
+    document.getElementById("responseMsg").textContent = "Error de conexión.";
+  }
+
+  btn.disabled = false;
+  btn.textContent = "Reservar y enviar a WhatsApp";
+});
+</script>
+
+</body>
+</html>

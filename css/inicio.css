@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 120px; /* Ajusta según el tamaño de tu navbar */
+}
+
+
+/* Espaciado para centrar la sección */
+section {
+  scroll-margin-top: 100px; /* Ajusta esto si tienes un navbar fijo */
+}
+
+/* ======================================================
+   PALETA DE COLORES
+====================================================== */
+:root {
+  --negro: #000000;
+  --blanco: #ffffff;
+  --dorado: #ffcc00;
+  --golden-rose: #dda15e; /* dorado rosado elegante */
+  --gris-suave: #bbbbbb;
+}
+
+/* ======================================================
+   RESET Y TIPOGRAFÍA
+====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--negro);
+  color: var(--blanco);
+  overflow-x: hidden;
+}
+
+/* ======================================================
+   NAVBAR
+====================================================== */
+.navbar {
+  background: var(--negro) !important;
+  border-bottom: 1px solid var(--dorado) !important;
+}
+
+.navbar .nav-link {
+  color: var(--blanco) !important;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--dorado) !important;
+}
+
+.navbar-brand span {
+  color: var(--dorado) !important;
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.45);
+}
+
+.hero-content h1 {
+  text-shadow: 0 0 15px var(--dorado);
+}
+
+.hero-content p {
+  text-shadow: 0 0 10px var(--dorado);
+}
+
+/* Botones */
+.btn-warning {
+  background: var(--dorado);
+  border: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-warning:hover {
+  background: var(--golden-rose);
+}
+
+.btn-outline-light:hover {
+  background: var(--dorado);
+  color: var(--negro);
+}
+
+/* ======================================================
+   IMÁGENES MODERADAS (medianas)
+====================================================== */
+.img-moderada {
+  max-width: 90%;
+  border-radius: 15px;
+  transition: transform .3s ease;
+}
+
+.img-moderada:hover {
+  transform: scale(1.02);
+}
+
+/* ======================================================
+   SOBRE NOSOTROS
+====================================================== */
+#nosotros h2 {
+  text-shadow: 0 0 8px var(--golden-rose);
+}
+
+#nosotros blockquote {
+  font-family: 'Shantell Sans', cursive;
+  font-weight: bold;
+}
+
+/* ======================================================
+   SERVICIOS - CAROUSEL
+====================================================== */
+#servicios .carousel {
+  max-width: 800px;     /* tamaño mediano */
+  margin: 0 auto;       /* centrar */
+}
+
+#servicios .carousel-inner img {
+  max-height: 420px;     /* control de altura */
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.sombra {
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.4);
+}
+
+/* Flechas del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(88%) sepia(72%) saturate(300%) hue-rotate(10deg);
+}
+
+/* ======================================================
+   REEL
+====================================================== */
+.reel-wrapper {
+  width: 50%;              /* Ocupa la mitad */
+  max-width: 480px;        /* No tan gigante */
+  margin: 0 auto;
+  border: 2px solid var(--golden-rose);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(221, 161, 94, 0.4);
+}
+
+.reel-video {
+  width: 100%;
+}
+
+/* ======================================================
+   TESTIMONIOS
+====================================================== */
+
+.border-gold {
+  border: 2px solid var(--golden-rose);
+  border-radius: 10px;
+}
+
+/* ======================================================
+   LOGROS
+====================================================== */
+#logros .p-4 {
+  border: 2px solid var(--golden-rose) !important;
+  transition: transform .3s ease;
+}
+
+#logros .p-4:hover {
+  transform: translateY(-8px);
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+footer {
+  background: var(--negro);
+  color: var(--blanco);
+}
+
+footer h2 {
+  color: var(--dorado);
+  text-shadow: 0 0 10px var(--golden-rose);
+}
+
+footer a {
+  color: var(--dorado);
+  transition: 0.2s;
+}
+
+footer a:hover {
+  color: var(--golden-rose);
+}
+
+footer img {
+  filter: drop-shadow(0 0 6px var(--golden-rose));
+}
+
+/* ======================================================
+   MODALES
+====================================================== */
+.modal-content {
+  background: #111;
+  color: var(--blanco);
+  border-radius: 15px;
+}
+
+.modal-content label {
+  color: var(--dorado);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--golden-rose);
+}
+
+.btn-close-white {
+  filter: invert(100%);
+}
+
+.modal .btn-warning {
+  background: var(--dorado);
+}
+
+.modal .btn-warning:hover {
+  background: var(--golden-rose);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.3rem;
+  }
+
+  .img-moderada {
+    max-width: 100%;
+  }
+
+  .reel-wrapper{
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+

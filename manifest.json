@@ -1,0 +1,20 @@
+{
+  "name": "Estética LK_Estudio",
+  "short_name": "LK_Estudio",
+  "start_url": "index.php",
+  "display": "standalone",
+  "background": "linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(183, 110, 121, 1) 41%, rgba(255, 215, 0, 1) 73%, rgba(0, 0, 0, 1) 100%)",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

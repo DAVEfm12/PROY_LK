@@ -1,0 +1,361 @@
+/* =====================================
+   ESTILO GENERAL - MOBILE FIRST
+===================================== */
+:root {
+  --rosa: #B76E79;
+  --negro: #000;
+  --dorado: #c8a559;
+  --blanco: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, #000, #1a1a1a, #3a2a2a);
+  color: var(--blanco);
+  min-height: 100vh;
+}
+
+/* =====================================
+   CONTENEDOR PRINCIPAL
+===================================== */
+.dashboard {
+  display: flex;
+  width: 100%;
+}
+
+/* =====================================
+   BOTÓN PARA ABRIR/CERRAR SIDEBAR
+===================================== */
+.toggle-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 50;
+  background: var(--rosa);
+  border: none;
+  padding: 10px 14px;
+  font-size: 22px;
+  color: var(--blanco);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.toggle-btn:hover {
+  background: #a25d68;
+}
+
+/* =====================================
+   SIDEBAR
+===================================== */
+.sidebar {
+  width: 250px;
+  background: var(--negro);
+  height: 100vh;
+  padding: 25px 10px;
+  position: fixed;
+  top: 0;
+  left: -260px;
+  transition: all .3s ease;
+  z-index: 40;
+  border-right: 2px solid var(--rosa);
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+/* Sidebar colapsado a solo iconos */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed .menu-text {
+  display: none;
+}
+
+.sidebar.collapsed img {
+  width: 45px !important;
+}
+
+/* =====================================
+   BRAND
+===================================== */
+.sidebar .brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--blanco);
+  margin-top: 10px;
+}
+
+.sidebar .brand img {
+  width: 70px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.sidebar .brand span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* =====================================
+   MENÚ
+===================================== */
+.sidebar ul.menu {
+  list-style: none;
+  margin-top: 30px;
+  padding: 0;
+}
+
+.sidebar ul.menu li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin: 8px 0;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 17px;
+  transition: .3s ease;
+  color: var(--blanco);
+}
+
+.sidebar ul.menu li i {
+  font-size: 22px;
+  color: var(--dorado);
+}
+
+.sidebar ul.menu li:hover {
+  background: #ffffff22;
+}
+
+.sidebar ul.menu li.active {
+  background: var(--rosa);
+  color: var(--blanco);
+}
+
+/* =====================================
+   MENÚ COLAPSADO: Centrar íconos
+===================================== */
+.sidebar.collapsed ul.menu li {
+  justify-content: center;
+}
+
+/* =====================================
+   CONTENIDO PRINCIPAL
+===================================== */
+.content {
+  margin-left: 0;
+  padding: 20px;
+  width: 100%;
+  transition: .3s;
+}
+
+.content h1,
+.content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Cuando sidebar está abierto */
+.sidebar.active ~ .content {
+  margin-left: 250px;
+}
+
+/* Cuando sidebar está colapsado */
+.sidebar.collapsed ~ .content {
+  margin-left: 80px !important;
+}
+
+/* =====================================
+   PANELES
+===================================== */
+.panel {
+  display: none;
+  animation: fade .3s ease;
+}
+
+.panel.visible {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+/* =====================================
+   CARDS
+===================================== */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: 10px;
+}
+
+.card {
+  background: #111;
+  border: 1px solid var(--dorado);
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card i {
+  font-size: 38px;
+  color: var(--rosa);
+}
+
+.card h3 {
+  color: var(--dorado);
+}
+
+/* =====================================
+   TABLA
+===================================== */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.tabla th {
+  background: var(--rosa);
+  color: var(--blanco);
+  padding: 14px;
+}
+
+.tabla td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.badge.pendiente {
+  background: var(--dorado);
+  padding: 6px 12px;
+  color: var(--negro);
+  border-radius: 6px;
+}
+
+/* =====================================
+   FORMULARIO
+===================================== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form input {
+  padding: 12px;
+  border: 1px solid var(--rosa);
+  background: #111;
+  color: var(--blanco);
+  border-radius: 6px;
+}
+
+.btn {
+  background: var(--rosa);
+  padding: 12px;
+  color: var(--blanco);
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #a25d68;
+}
+
+/* =====================================
+   GALERÍA
+===================================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid var(--rosa);
+}
+
+/* =====================================
+   ESTRELLAS
+===================================== */
+.stars {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.stars i {
+  font-size: 30px;
+  color: var(--dorado);
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+/* Tablets */
+@media (min-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Laptops */
+@media (min-width: 900px) {
+  .toggle-btn {
+    display: none;
+  }
+  .sidebar {
+    left: 0;
+  }
+  .content {
+    margin-left: 250px;
+  }
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Escritorio grande */
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.panel {
+  display: none;
+}
+
+.panel.visible {
+  display: block;
+}

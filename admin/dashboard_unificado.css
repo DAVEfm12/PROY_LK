@@ -1,0 +1,216 @@
+/* ====================================================== */
+/*                 PALETA DE COLORES GOLD                 */
+/* ====================================================== */
+:root {
+  --negro: #0b0b0c;
+  --negro2: #131315;
+  --dorado: #e4b36b; /* GOLDEN ROSE */
+  --dorado-lite: #f5d7a1;
+  --blanco: #ffffff;
+  --gris-claro: #d7d7d7;
+
+  --card-bg: #111113;
+  --borde-dorado: rgba(228, 179, 107, 0.8);
+}
+
+/* FONTS */
+body {
+  background-color: var(--negro);
+  color: var(--blanco);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ====================================================== */
+/*                      NAVBAR                            */
+/* ====================================================== */
+.navbar {
+  background: var(--negro2) !important;
+  border-bottom: 1px solid var(--borde-dorado);
+  box-shadow: 0 0 15px rgba(228, 179, 107, 0.2);
+}
+
+.navbar-brand {
+  color: var(--dorado) !important;
+  text-shadow: 0 0 6px rgba(228, 179, 107, 0.45);
+}
+
+/* Botones del navbar */
+.navbar .btn {
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.navbar .btn-outline-light {
+  border-color: var(--gris-claro);
+  color: var(--blanco);
+}
+
+.navbar .btn-outline-warning {
+  border-color: var(--dorado);
+  color: var(--dorado);
+}
+
+.navbar .btn-outline-warning:hover {
+  background: var(--dorado);
+  color: var(--negro);
+}
+
+.navbar .btn-danger {
+  background: #b40000;
+  border-color: #b40000;
+  font-weight: bold;
+}
+
+/* ====================================================== */
+/*                       TARJETAS                         */
+/* ====================================================== */
+.card {
+  border-radius: 16px;
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(228, 179, 107, 0.3);
+  box-shadow: 0 0 15px rgba(228, 179, 107, 0.12);
+  transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(228, 179, 107, 0.25);
+}
+
+.card h4,
+.card h5,
+.card h6 {
+  color: var(--dorado);
+  font-weight: 700;
+}
+
+/* ====================================================== */
+/*                 TABLAS DE ADMIN                        */
+/* ====================================================== */
+.table-dark {
+  background-color: #0f0f10 !important;
+}
+
+.table thead {
+  background: var(--dorado);
+  color: var(--negro);
+  font-weight: bold;
+}
+
+.table tbody tr:hover {
+  background: rgba(228, 179, 107, 0.1);
+  transition: 0.2s;
+}
+
+.table td {
+  color: var(--gris-claro);
+}
+
+/* ====================================================== */
+/*                   BOTONES GOLD                         */
+/* ====================================================== */
+.btn-warning {
+  background: var(--dorado);
+  border-color: var(--dorado);
+  color: var(--negro);
+  font-weight: bold;
+  border-radius: 12px;
+}
+
+.btn-warning:hover {
+  background: var(--dorado-lite);
+  color: var(--negro);
+  box-shadow: 0 0 15px rgba(228, 179, 107, 0.6);
+}
+
+.btn-outline-light:hover {
+  background: var(--blanco);
+  color: var(--negro);
+}
+
+/* Botones secundarios */
+.btn-outline-light {
+  border-color: var(--gris-claro);
+  color: var(--gris-claro);
+}
+
+/* ====================================================== */
+/*                CAMPOS DE FORMULARIO                    */
+/* ====================================================== */
+input,
+select,
+textarea {
+  background: #1a1a1c !important;
+  border: 1px solid var(--borde-dorado) !important;
+  color: var(--blanco) !important;
+  border-radius: 10px !important;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #bbbbbb;
+}
+
+/* Focus elegante */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px rgba(228, 179, 107, 0.5);
+  border-color: var(--dorado) !important;
+}
+
+/* ====================================================== */
+/*                 LISTA DE ALUMNAS                       */
+/* ====================================================== */
+#listaAlumnas {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dorado) var(--negro2);
+}
+
+#listaAlumnas::-webkit-scrollbar {
+  width: 8px;
+}
+
+#listaAlumnas::-webkit-scrollbar-thumb {
+  background: var(--dorado);
+  border-radius: 10px;
+}
+
+/* ====================================================== */
+/*                  DETALLE DE CITA                       */
+/* ====================================================== */
+#detalleCita {
+  border-left: 3px solid var(--dorado);
+}
+
+/* ====================================================== */
+/*                      RESPONSIVE                        */
+/* ====================================================== */
+
+@media (max-width: 992px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar .btn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+
+  .table-responsive {
+    font-size: 0.8rem;
+  }
+}

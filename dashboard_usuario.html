@@ -1,0 +1,204 @@
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <!-- ============================
+        CONFIGURACIÓN BASE
+    ============================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Usuario | LK Studio</title>
+    <!-- ============================
+        METADATOS SEO
+    ============================= -->
+    <meta name="description" content="Dashboard de usuario de LK Studio. Consulta reservaciones, datos personales, historial y fotos de tus servicios.">
+    <meta name="keywords" content="LK Studio, Dashboard, Reservaciones, Belleza, Usuario, Estética, Citas">
+    <meta name="author" content="David Flores Morales & Cristhian Jafeth Ortega Salas">
+    <meta name="robots" content="index, follow">
+    <!-- ============================
+        OPEN GRAPH
+    ============================= -->
+    <meta property="og:title" content="Dashboard de Usuario | LK Studio">
+    <meta property="og:description" content="Accede a tu información, citas, historial y fotos en el Dashboard de Usuario.">
+    <meta property="og:image" content="assets/img/LK.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/dashboard_usuario">
+    <!-- ============================
+        PWA
+    ============================= -->
+    <meta name="theme-color" content="#d31ba2">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="assets/img/LK.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/img/LK.png">
+    <!-- ============================
+        FONTS & ICONOS
+    ============================= -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- ============================
+        CSS
+    ============================= -->
+    <link rel="stylesheet" href="css/dashboard_usuario.css">
+  </head>
+
+  <body>
+
+  <div class="dashboard">
+
+    <!-- BOTÓN PARA ABRIR/CERRAR SIDEBAR -->
+    <button class="toggle-btn" aria-label="Abrir menú">☰</button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a href="index.html" class="brand">
+          <img src="assets/img/LK.png" alt="Logo LK Studio">
+          <span>LK Studio</span>
+        </a>
+
+        <ul class="menu">
+            <li onclick="verPanel('inicio')">
+                <i class="fa fa-house"></i>
+                <span class="menu-text">Inicio</span>
+            </li>
+
+            <li onclick="verPanel('reservaciones')">
+                <i class="fa fa-calendar-check"></i>
+                <span class="menu-text">Reservaciones</span>
+            </li>
+
+              <li onclick="verPanel('datos')">
+                <i class="fa fa-user"></i>
+                <span class="menu-text">Perfil</span>
+            </li>
+
+              <li onclick="verPanel('fotos')">
+                <i class="fa fa-camera"></i>
+                <span class="menu-text">Mis Fotos</span>
+            </li>
+
+            <li onclick="window.location.href='index.html'">
+                <i class="fa fa-door-open"></i>
+                <span class="menu-text">Cerrar sesión</span>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="content">
+
+      <!-- INICIO -->
+      <section id="inicio" class="panel visible">
+        <h1>Bienvenido, <span id="userName">Usuario</span> 👋</h1>
+        <p class="sub">Aquí puedes administrar tus citas, datos y más.</p>
+
+        <div class="cards">
+          <div class="card">
+            <i class="fa fa-calendar-check"></i>
+            <h3>Reservaciones</h3>
+            <p>Ver tus próximas citas</p>
+          </div>
+
+          <div class="card">
+            <i class="fa fa-user"></i>
+            <h3>Mis Datos</h3>
+            <p>Edita tu información personal</p>
+          </div>
+
+          <div class="card">
+            <i class="fa fa-camera"></i>
+            <h3>Fotos</h3>
+            <p>Sube testimonios e imágenes</p>
+          </div>
+
+          <div class="card">
+            <i class="fa fa-list"></i>
+            <h3>Historial</h3>
+            <p>Revisa tus actividades</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESERVACIONES -->
+      <section id="reservaciones" class="panel">
+        <h2>Mis Reservaciones</h2>
+
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+
+          <tbody id="tablaReservas">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><span class="badge "></span></td>
+            </tr>
+          </tbody>
+
+        </table>
+      </section>
+
+      <!-- DATOS -->
+      <section id="datos" class="panel">
+        <h2>Mis Datos</h2>
+
+        <form class="form">
+          <label>Nombre</label>
+          <input type="text" id="nombre" value="">
+
+          <label>Teléfono</label>
+          <input type="text" id="tel" value="">
+
+          <label>Correo</label>
+          <input type="email" id="correo" value="">
+
+          <button class="btn">Guardar Cambios</button>
+        </form>
+      </section>
+
+      <!-- FOTOS -->
+      <section id="fotos" class="panel">
+        <h2>Mis Fotos y Testimonios</h2>
+
+        <div class="upload-box">
+          <input type="file" id="fotoSubir">
+          <button class="btn">Subir Imagen</button>
+        </div>
+
+        <div class="gallery" id="galeria">
+          
+        </div>
+
+        <div class="stars">
+          <p>Califica tu experiencia:</p>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============================
+      SCRIPTS
+  ============================= -->
+  <script src="js/dashboard_usuario.js"></script>
+
+  <script>
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const sidebar = document.querySelector('.sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');   // entra/sale en móvil
+      sidebar.classList.toggle('collapsed'); // se vuelve mini en desktop
+    });
+    
+  </script>
+
+  </body>
+  </html>
